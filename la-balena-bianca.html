@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>La Balena Bianca — Impresa di pulizie a Milano, Muggiò e Monza</title>
+<meta name="description" content="Impresa di pulizie a Milano, Muggiò e Monza. Uffici, condomini, post-cantiere e abitazioni. Preventivo gratuito in 24 ore." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --soft:#F4FCFF;
+    --card:#FFFFFF;
+    --ink:#0C1A26;
+    --ink-2:#3D5166;
+    --muted:#748494;
+    --blue:#7DE8FF;
+    --blue-mid:#3BBFDA;
+    --blue-dark:#1E4F5C;
+    --blue-soft:rgba(125,232,255,0.10);
+    --blue-border:rgba(125,232,255,0.28);
+    --line:rgba(12,26,38,.09);
+    --line-2:rgba(12,26,38,.05);
+    --accent:var(--blue-dark);
+    --accent-soft:rgba(125,232,255,0.12);
+    --shadow:0 1px 2px rgba(12,26,38,.04), 0 8px 28px -12px rgba(12,26,38,.10);
+    --shadow-blue:0 0 0 4px rgba(125,232,255,0.20);
+    --radius:16px;
+    --radius-pill:999px;
+    --maxw:1140px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:"Ubuntu",sans-serif;
+    background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;line-height:1.6;font-size:16px;
+  }
+  ::selection{background:var(--blue);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+  h1,h2,h3,h4,h5{
+    font-family:"Ubuntu",sans-serif;font-weight:700;
+    letter-spacing:-.015em;line-height:1.12;margin:0;
+  }
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease;
+  }
+  .nav.scrolled{border-bottom-color:var(--line-2)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand-mark{
+    width:32px;height:32px;border-radius:9px;
+    background:var(--blue-dark);color:#fff;
+    display:grid;place-items:center;
+  }
+  .brand-mark svg{width:18px;height:18px}
+  .brand-name{font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:14.5px;color:var(--ink-2);font-weight:500;position:relative;padding-bottom:2px}
+  .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .3s ease;border-radius:2px}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--blue);color:var(--blue-dark);
+    padding:10px 18px;border-radius:var(--radius-pill);
+    font-size:14px;font-weight:600;
+    transition:background .2s ease,transform .15s ease,box-shadow .2s ease;
+  }
+  .nav-cta:hover{background:#5DD8F5;transform:translateY(-1px);box-shadow:0 4px 14px rgba(125,232,255,0.40)}
+  @media (max-width:820px){.nav-links{display:none}.nav-cta span{display:none}.nav-cta{padding:10px 14px}}
+
+  /* HERO */
+  .hero{position:relative;min-height:520px;display:flex;align-items:flex-start;padding:0;overflow:hidden}
+  @media(max-width:640px){.hero{min-height:420px}}
+  #oceanCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-content{position:relative;z-index:2;padding:64px 0 48px;width:100%}
+  .hero-text{max-width:600px}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 14px;border-radius:var(--radius-pill);
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.28);
+    color:#fff;font-size:13px;font-weight:500;
+    backdrop-filter:blur(8px);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px rgba(125,232,255,0.30)}
+
+  h1.hero-title{
+    margin:18px 0 14px;
+    font-size:clamp(42px,6.5vw,76px);
+    letter-spacing:-.03em;
+    max-width:13ch;color:#fff;
+    text-shadow:0 2px 24px rgba(0,0,0,0.18);
+    line-height:1.05;
+  }
+  h1.hero-title span{color:var(--blue)}
+
+  .hero-sub{
+    font-size:clamp(16px,1.3vw,18px);
+    color:rgba(255,255,255,0.80);
+    max-width:46ch;margin:0 0 32px;font-weight:400;line-height:1.65;
+  }
+
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 24px;border-radius:var(--radius-pill);
+    font-weight:600;font-size:15px;
+    transition:transform .15s ease,background .2s ease,color .2s ease,box-shadow .2s ease;
+  }
+  .btn-primary{background:#fff;color:var(--ink)}
+  .btn-primary:hover{background:var(--blue);color:var(--blue-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(125,232,255,0.35)}
+  .btn-ghost{background:rgba(255,255,255,0.10);color:#fff;border:1.5px solid rgba(255,255,255,0.32);backdrop-filter:blur(4px)}
+  .btn-ghost:hover{background:rgba(255,255,255,0.20);border-color:rgba(255,255,255,0.55)}
+  .btn svg{width:16px;height:16px}
+
+  /* SECTIONS */
+  section{padding:88px 0;position:relative}
+  .sec-soft{background:var(--soft)}
+  .sec-head{margin-bottom:52px;max-width:640px}
+  .sec-tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--blue-dark);margin-bottom:16px;
+  }
+  .sec-tag::before{content:"";width:18px;height:2px;background:var(--blue);border-radius:2px}
+  .sec-head h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.022em;color:var(--ink)}
+  .sec-head p{margin-top:16px;color:var(--ink-2);font-size:17px;max-width:58ch;line-height:1.65}
+
+  /* SERVICES */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:920px){.services{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.services{grid-template-columns:1fr}}
+  .svc{
+    background:var(--card);border:1px solid var(--line-2);
+    border-radius:var(--radius);padding:28px 26px 26px;
+    position:relative;overflow:hidden;
+    transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+  }
+  .svc::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--blue),var(--blue-mid));
+    transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+  }
+  .svc:hover{border-color:var(--blue-border);transform:translateY(-3px);box-shadow:0 12px 32px -8px rgba(30,79,92,0.12)}
+  .svc:hover::before{transform:scaleX(1)}
+  .svc-icon{
+    width:44px;height:44px;border-radius:11px;
+    background:var(--accent-soft);color:var(--blue-dark);
+    display:grid;place-items:center;margin-bottom:18px;
+    transition:background .25s ease;
+  }
+  .svc:hover .svc-icon{background:var(--blue);color:var(--blue-dark)}
+  .svc-icon svg{width:20px;height:20px}
+  .svc h3{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .svc p{margin:0;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
+  @media(max-width:820px){.gallery{grid-template-columns:1fr 1fr}.gallery .ph:first-child{grid-column:1/-1}}
+  @media(max-width:520px){.gallery{grid-template-columns:1fr}.gallery .ph:first-child{grid-column:auto}}
+  .ph{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:var(--soft)}
+  .ph:first-child{aspect-ratio:5/4}
+  .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .ph:hover img{transform:scale(1.04)}
+  .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(12,26,38,.45));pointer-events:none}
+  .ph span{position:absolute;left:18px;bottom:16px;z-index:1;color:#fff;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:920px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:580px){.why-grid{grid-template-columns:1fr}}
+  .why-item{
+    background:var(--card);border:1px solid var(--line-2);
+    border-radius:var(--radius);padding:28px;
+    transition:border-color .25s ease,transform .25s ease;
+  }
+  .why-item:hover{border-color:var(--blue-border);transform:translateY(-2px)}
+  .why-num{
+    font-size:36px;font-weight:700;color:var(--blue);
+    letter-spacing:-.03em;margin-bottom:16px;line-height:1;
+  }
+  .why-item h4{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .why-item p{margin:0;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+
+  /* AREA */
+  .area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:720px){.area-grid{grid-template-columns:1fr}}
+  .city{
+    background:var(--card);border:1px solid var(--line-2);
+    border-radius:var(--radius);padding:26px;
+    display:flex;align-items:center;gap:16px;
+    transition:border-color .25s ease,transform .25s ease;
+  }
+  .city:hover{border-color:var(--blue-border);transform:translateY(-2px)}
+  .city-pin{
+    flex:0 0 auto;width:44px;height:44px;border-radius:11px;
+    background:var(--accent-soft);color:var(--blue-dark);
+    display:grid;place-items:center;
+    transition:background .25s ease;
+  }
+  .city:hover .city-pin{background:var(--blue);color:var(--blue-dark)}
+  .city-pin svg{width:18px;height:18px}
+  .city h4{font-size:18px;font-weight:700;margin-bottom:3px;letter-spacing:-.01em}
+  .city p{font-size:13.5px;color:var(--muted);margin:0}
+
+  /* CONTATTI */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+  @media(max-width:920px){.contact-grid{grid-template-columns:1fr}}
+  .contact-list{display:grid;gap:10px;margin-top:28px}
+  .contact-row{
+    display:flex;align-items:center;gap:14px;
+    padding:17px 20px;background:var(--card);
+    border:1px solid var(--line-2);border-radius:14px;
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .contact-row:hover{border-color:var(--blue-border);transform:translateY(-1px)}
+  .contact-icon{
+    width:38px;height:38px;border-radius:10px;
+    background:var(--accent-soft);color:var(--blue-dark);
+    display:grid;place-items:center;flex:0 0 auto;
+  }
+  .contact-icon svg{width:16px;height:16px}
+  .contact-row div small{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  .contact-row div b{font-weight:700;font-size:15px}
+
+  .form-card{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:20px;padding:36px;
+    box-shadow:0 2px 4px rgba(12,26,38,.04),0 16px 48px -16px rgba(12,26,38,.10);
+  }
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;color:var(--ink-2);margin-bottom:6px;font-weight:600;letter-spacing:.01em}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 16px;border-radius:11px;
+    border:1.5px solid var(--line);background:#fff;
+    font:inherit;color:var(--ink);
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .field textarea{min-height:100px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--blue-mid);
+    box-shadow:var(--shadow-blue);
+  }
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:540px){.row-2{grid-template-columns:1fr}}
+  .submit{
+    width:100%;margin-top:8px;
+    background:var(--ink);color:#fff;
+    padding:15px;border-radius:var(--radius-pill);
+    font-weight:700;font-size:15px;letter-spacing:-.01em;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:background .2s ease,transform .15s ease;
+  }
+  .submit:hover:not(:disabled){background:var(--blue-dark);transform:translateY(-1px)}
+  .submit svg{width:16px;height:16px}
+  .form-foot{margin-top:12px;font-size:12.5px;color:var(--muted);text-align:center}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line-2);padding:52px 0 32px}
+  .foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+  .foot-col h5{font-size:12px;letter-spacing:.10em;color:var(--muted);font-weight:600;margin:0 0 16px;text-transform:uppercase}
+  .foot-col a,.foot-col p{display:block;font-size:14px;color:var(--ink-2);padding:4px 0;margin:0}
+  .foot-col a:hover{color:var(--blue-dark)}
+  .foot-brand p{margin:12px 0 0;font-size:14px;color:var(--ink-2);max-width:32ch;line-height:1.65}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:24px;border-top:1px solid var(--line-2);
+    color:var(--muted);font-size:13px;flex-wrap:wrap;gap:10px;
+  }
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand" aria-label="La Balena Bianca">
+      <span class="brand-mark" aria-hidden="true">
+        <!-- mini whale -->
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 13c0-3.5 3-6 7-6s7 2.5 7 5l3-1.5-1 3 1 3-3-1.5c0 1-1 2-2 2.5l1 2-2.5-1c-1 .3-2 .5-3.5.5-4 0-7-2.5-7-6z"/>
+          <circle cx="7" cy="11.5" r=".9" fill="#fff"/>
+        </svg>
+      </span>
+      <span class="brand-name">La Balena Bianca</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#servizi">Servizi</a>
+      <a href="#perche">Perché noi</a>
+      <a href="#aree">Aree</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+
+    <a href="#contatti" class="nav-cta">
+      <span>Preventivo gratuito</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero" id="heroSection">
+  <canvas id="oceanCanvas"></canvas>
+  <div class="container hero-content">
+    <div class="hero-text">
+        <span class="eyebrow reveal"><span class="dot"></span> Disponibili a Milano e in Brianza</span>
+
+        <h1 class="hero-title reveal">
+          Impresa di <span>pulizie</span>.
+        </h1>
+
+        <p class="hero-sub reveal">
+          Zero compromessi. Spazi consegnati impeccabili, ogni volta.
+        </p>
+
+        <div class="cta-row reveal">
+          <a href="#contatti" class="btn btn-primary">
+            Richiedi preventivo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="tel:+39000000000" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Chiamaci ora
+          </a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var canvas = document.getElementById('oceanCanvas');
+  var ctx = canvas.getContext('2d');
+  var W, H;
+
+  function resize(){
+    var hero = document.getElementById('heroSection');
+    var dpr  = window.devicePixelRatio || 1;
+    W = hero.offsetWidth;
+    H = hero.offsetHeight;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', function(){ ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+  /* ── state ── */
+  var t = 0;  // seconds
+
+  /* ── bubbles ── */
+  var bubbles = [];
+  for(var i=0;i<18;i++) bubbles.push(makeBubble(true));
+  function makeBubble(random){
+    return {
+      x: Math.random()*W,
+      y: random ? Math.random()*H : H+10,
+      r: 3 + Math.random()*8,
+      speed: 0.2 + Math.random()*0.5,
+      alpha: 0.25 + Math.random()*0.35
+    };
+  }
+
+  /* ── sparkles ── */
+  var sparks = [];
+  function addSpark(x,y){
+    for(var i=0;i<6;i++){
+      var ang = (Math.PI*2/6)*i + Math.random()*.4;
+      sparks.push({x:x,y:y,vx:Math.cos(ang)*1.5,vy:Math.sin(ang)*1.5,life:1});
+    }
+  }
+
+  /* ── whale state machine ──
+     phases (each in seconds):
+       0      – underwater, moving left→right
+       3      – rising
+       4.5    – surface: look around, sponge scrub
+       7.5    – diving
+       9      – loop
+  */
+  var CYCLE = 9;
+
+  function easeInOut(x){ return x<.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2; }
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+
+  /* draw one frame */
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    // clip to rounded rect so nothing escapes the card edges
+    ctx.save();
+    var r = 24 * (W/canvas.offsetWidth||1);
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(0,0,W,H,r) : ctx.rect(0,0,W,H);
+    ctx.clip();
+
+    /* ── sky & horizon ── */
+    var skyH = H * 0.42;  // sky takes top 42%, water fills rest
+    var skyGrad = ctx.createLinearGradient(0,0,0,skyH);
+    skyGrad.addColorStop(0,'#e8f4fb');
+    skyGrad.addColorStop(1,'#c8e8f5');
+    ctx.fillStyle = skyGrad;
+    ctx.fillRect(0,0,W,skyH);
+
+    /* ── water ── */
+    var waterGrad = ctx.createLinearGradient(0,skyH,0,H);
+    waterGrad.addColorStop(0,'#5abfde');
+    waterGrad.addColorStop(0.3,'#2a8fbb');
+    waterGrad.addColorStop(1,'#0d4f72');
+    ctx.fillStyle = waterGrad;
+    ctx.fillRect(0,skyH,W,H-skyH);
+
+    /* ── water shimmer lines ── */
+    ctx.save();
+    ctx.globalAlpha = 0.12;
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    for(var si=0;si<6;si++){
+      var sy = skyH + 28 + si*28 + Math.sin(t*1.3+si)*6;
+      ctx.beginPath();
+      ctx.moveTo(W*0.05 + Math.sin(t+si)*8, sy);
+      ctx.bezierCurveTo(W*0.3,sy-10+Math.sin(t*0.7+si)*8, W*0.7,sy+10+Math.sin(t*0.9+si)*8, W*0.95,sy);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    /* ── waves on horizon ── */
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.lineCap  = 'round';
+    for(var wi=0;wi<3;wi++){
+      var woff = wi*18 - 18;
+      ctx.beginPath();
+      for(var wx=0;wx<=W;wx+=6){
+        var wy = skyH + woff + Math.sin(wx*0.022 + t*1.6 + wi*1.1)*7 + Math.sin(wx*0.041 + t*1.1)*4;
+        wx===0 ? ctx.moveTo(wx,wy) : ctx.lineTo(wx,wy);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    /* ── bubbles ── */
+    bubbles.forEach(function(b){
+      b.y -= b.speed;
+      b.x += Math.sin(t*1.2 + b.r)*0.35;
+      if(b.y + b.r < 0) { Object.assign(b, makeBubble(false)); b.x=Math.random()*W; }
+      ctx.save();
+      ctx.globalAlpha = b.alpha;
+      ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+      ctx.stroke();
+      // shine
+      ctx.globalAlpha = b.alpha*0.6;
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(b.x-b.r*.3, b.y-b.r*.3, b.r*.3, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    /* ── sparkles ── */
+    sparks = sparks.filter(function(s){
+      s.x+=s.vx; s.y+=s.vy; s.life-=0.04;
+      if(s.life<=0) return false;
+      ctx.save();
+      ctx.globalAlpha = s.life;
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1.5;
+      var len = 5*s.life;
+      ctx.beginPath(); ctx.moveTo(s.x-len,s.y); ctx.lineTo(s.x+len,s.y); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s.x,s.y-len); ctx.lineTo(s.x,s.y+len); ctx.stroke();
+      ctx.restore();
+      return true;
+    });
+
+    /* ── props underwater: sponge + soap drifting ── */
+    (function(){
+      // sponge — figure-8 path, continuous gentle tumble
+      var sx = W*0.65 + Math.sin(t*0.38)*W*0.08 + Math.sin(t*0.19)*W*0.03;
+      var sy = skyH + H*0.28 + Math.sin(t*0.55)*H*0.06 + Math.cos(t*0.27)*H*0.02;
+      var rot = t * 0.22; // slow continuous rotation
+      var sw = 24, sh = 16;
+      // depth tint: blend with water color based on depth
+      var depthFade = 0.55 + 0.25 * ((sy - skyH) / H);
+      ctx.save();
+      ctx.globalAlpha = Math.max(0.35, 0.72 - depthFade*0.3);
+      ctx.translate(sx, sy);
+      ctx.rotate(rot);
+      // water-tinted overlay trick: draw twice, second with water color at low alpha
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(-sw/2,-sh/2,sw,sh,4) : ctx.rect(-sw/2,-sh/2,sw,sh);
+      ctx.fillStyle='#E8B84B'; ctx.fill();
+      // water tint overlay
+      ctx.fillStyle='rgba(42,100,130,0.18)'; ctx.fill();
+      ctx.strokeStyle='rgba(30,79,92,0.4)'; ctx.lineWidth=1.4; ctx.stroke();
+      // holes with water tint
+      [[-8,-3],[0,-3],[8,-3],[-4,4],[4,4]].forEach(function(h){
+        ctx.beginPath(); ctx.arc(h[0],h[1],1.6,0,Math.PI*2);
+        ctx.fillStyle='rgba(30,79,92,0.30)'; ctx.fill();
+      });
+      ctx.restore();
+    })();
+
+    (function(){
+      // soap — different lissajous, slower tumble
+      var sx = W*0.78 + Math.cos(t*0.29)*W*0.07 + Math.sin(t*0.51)*W*0.02;
+      var sy = skyH + H*0.38 + Math.sin(t*0.44+1.5)*H*0.05 + Math.cos(t*0.21)*H*0.02;
+      var rot = t * 0.15;
+      var depthFade = 0.55 + 0.3 * ((sy - skyH) / H);
+      ctx.save();
+      ctx.globalAlpha = Math.max(0.30, 0.68 - depthFade*0.3);
+      ctx.translate(sx, sy);
+      ctx.rotate(rot);
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(-13,-8,26,16,5) : ctx.rect(-13,-8,26,16);
+      var sg = ctx.createLinearGradient(-13,-8,13,8);
+      sg.addColorStop(0,'#b8e0ff'); sg.addColorStop(1,'#6aaedc');
+      ctx.fillStyle=sg; ctx.fill();
+      ctx.fillStyle='rgba(42,100,130,0.15)'; ctx.fill();
+      ctx.strokeStyle='rgba(30,79,92,0.35)'; ctx.lineWidth=1.4; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-5,-3); ctx.lineTo(4,-3);
+      ctx.strokeStyle='rgba(255,255,255,0.45)'; ctx.lineWidth=1.6; ctx.lineCap='round'; ctx.stroke();
+      ctx.restore();
+    })();
+
+    /* ── extra cleaning props: bucket, cloth, brush, bottle ── */
+    (function(){
+      var props = [
+        // bucket
+        { ox:0.20, oy:0.20, sx:0.055, sy:0.07, sp:0.31, ph:0.0, rot:0.10,
+          draw: function(c,sc){ 
+            // bucket body trapezoid
+            c.beginPath(); c.moveTo(-10,sc*-14); c.lineTo(10,sc*-14);
+            c.lineTo(8,sc*10); c.lineTo(-8,sc*10); c.closePath();
+            c.fillStyle='#5BC8F5'; c.fill();
+            c.fillStyle='rgba(42,100,130,0.18)'; c.fill();
+            c.strokeStyle='rgba(30,79,92,0.4)'; c.lineWidth=1.5; c.stroke();
+            // rim
+            c.beginPath(); c.roundRect ? c.roundRect(-11,sc*-16,22,5,2) : c.rect(-11,sc*-16,22,5);
+            c.fillStyle='#3aa8d8'; c.fill(); c.strokeStyle='rgba(30,79,92,0.4)'; c.lineWidth=1.2; c.stroke();
+            // handle arc
+            c.beginPath(); c.arc(0,sc*-18,8,Math.PI,0);
+            c.strokeStyle='rgba(30,79,92,0.5)'; c.lineWidth=2; c.fillStyle='none'; c.stroke();
+            // bubbles inside
+            c.globalAlpha*=0.6;
+            [[-3,sc*-4],[3,sc*2]].forEach(function(b){
+              c.beginPath(); c.arc(b[0],b[1],2.5,0,Math.PI*2);
+              c.strokeStyle='rgba(255,255,255,0.7)'; c.lineWidth=1; c.stroke();
+            });
+          }
+        },
+        // cloth / panno
+        { ox:0.45, oy:0.45, sx:0.06, sy:0.055, sp:0.27, ph:1.2, rot:0.13,
+          draw: function(c,sc){
+            // folded cloth shape
+            c.beginPath();
+            c.moveTo(-14,sc*-6);
+            c.bezierCurveTo(-14,sc*-12, 14,sc*-12, 14,sc*-6);
+            c.bezierCurveTo(16,sc*2, 10,sc*8, 0,sc*8);
+            c.bezierCurveTo(-10,sc*8,-16,sc*2,-14,sc*-6);
+            c.closePath();
+            c.fillStyle='#e8f4e8'; c.fill();
+            c.fillStyle='rgba(42,100,130,0.15)'; c.fill();
+            c.strokeStyle='rgba(30,79,92,0.35)'; c.lineWidth=1.4; c.stroke();
+            // fold lines
+            [sc*-3,sc*2].forEach(function(ly){
+              c.beginPath(); c.moveTo(-9,ly); c.quadraticCurveTo(0,ly-sc*3,9,ly);
+              c.strokeStyle='rgba(30,79,92,0.2)'; c.lineWidth=1; c.stroke();
+            });
+          }
+        },
+        // brush / spazzola
+        { ox:0.33, oy:0.55, sx:0.05, sy:0.065, sp:0.35, ph:2.5, rot:0.18,
+          draw: function(c,sc){
+            // handle
+            c.beginPath(); c.roundRect ? c.roundRect(-4,sc*-18,8,24,3) : c.rect(-4,sc*-18,8,24);
+            c.fillStyle='#c8845a'; c.fill();
+            c.fillStyle='rgba(42,100,130,0.18)'; c.fill();
+            c.strokeStyle='rgba(30,79,92,0.35)'; c.lineWidth=1.3; c.stroke();
+            // bristle head
+            c.beginPath(); c.roundRect ? c.roundRect(-8,sc*6,16,10,2) : c.rect(-8,sc*6,16,10);
+            c.fillStyle='#f0e8d0'; c.fill();
+            c.fillStyle='rgba(42,100,130,0.15)'; c.fill();
+            c.strokeStyle='rgba(30,79,92,0.35)'; c.lineWidth=1.3; c.stroke();
+            // bristles
+            for(var i=-6;i<=6;i+=3){
+              c.beginPath(); c.moveTo(i,sc*16); c.lineTo(i,sc*20);
+              c.strokeStyle='rgba(30,79,92,0.4)'; c.lineWidth=1.2; c.stroke();
+            }
+          }
+        },
+        // spray bottle
+        { ox:0.82, oy:0.18, sx:0.045, sy:0.06, sp:0.24, ph:3.8, rot:0.08,
+          draw: function(c,sc){
+            // bottle body
+            c.beginPath(); c.roundRect ? c.roundRect(-7,sc*-8,14,22,4) : c.rect(-7,sc*-8,14,22);
+            var bg=c.createLinearGradient(-7,0,7,0);
+            bg.addColorStop(0,'#d4f0d4'); bg.addColorStop(1,'#a8d8a8');
+            c.fillStyle=bg; c.fill();
+            c.fillStyle='rgba(42,100,130,0.15)'; c.fill();
+            c.strokeStyle='rgba(30,79,92,0.4)'; c.lineWidth=1.4; c.stroke();
+            // nozzle neck
+            c.beginPath(); c.roundRect ? c.roundRect(-3,sc*-16,6,10,2) : c.rect(-3,sc*-16,6,10);
+            c.fillStyle='#88c888'; c.fill(); c.strokeStyle='rgba(30,79,92,0.4)'; c.lineWidth=1.2; c.stroke();
+            // trigger
+            c.beginPath(); c.moveTo(3,sc*-12); c.lineTo(9,sc*-8); c.lineTo(7,sc*-6); c.lineTo(1,sc*-10);
+            c.fillStyle='#66aa66'; c.fill(); c.strokeStyle='rgba(30,79,92,0.35)'; c.lineWidth=1.2; c.stroke();
+            // label stripe
+            c.beginPath(); c.roundRect ? c.roundRect(-5,sc*0,10,6,1) : c.rect(-5,sc*0,10,6);
+            c.fillStyle='rgba(255,255,255,0.4)'; c.fill();
+          }
+        }
+      ];
+
+      props.forEach(function(p){
+        var sx2 = W*p.ox + Math.sin(t*p.sp + p.ph)*W*p.sx + Math.cos(t*p.sp*0.47)*W*p.sx*0.4;
+        var sy2 = skyH + H*p.oy + Math.sin(t*p.sp*0.63 + p.ph+1)*H*p.sy + Math.cos(t*p.sp*0.38+p.ph)*H*p.sy*0.4;
+        var rot2 = t * p.rot + p.ph;
+        var depth = (sy2 - skyH) / H;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0.28, 0.70 - depth*0.35);
+        ctx.translate(sx2, sy2);
+        ctx.rotate(rot2);
+        p.draw(ctx, 1);
+        ctx.restore();
+      });
+    })();
+
+    /* whale — beluga, continuous smooth animation */
+    var vertT      = (t % CYCLE) / CYCLE;
+    var vertSin    = (Math.sin(vertT*Math.PI*2 - Math.PI/2)+1)/2;
+    var riseAmt    = H * 0.30;
+    var whaleY     = skyH + riseAmt*(1 - vertSin);
+    var swayX      = W*0.5 + Math.sin(t*0.38)*W*0.14;
+    var tilt       = Math.cos(vertT*Math.PI*2)*0.14;
+    var whaleAlpha = 0.38 + vertSin*0.62;
+    var atSurface  = whaleY < skyH + H*0.18;
+    var sc  = W / 950;   // slightly larger
+    var WW  = 210*sc, WH = 100*sc;
+    var tailWag = Math.sin(t*2.0)*0.16;
+
+    ctx.save();
+    ctx.globalAlpha = whaleAlpha;
+    ctx.translate(swayX, whaleY);
+    ctx.rotate(tilt);
+
+    // body gradient
+    var bg = ctx.createLinearGradient(0, -WH*0.5, 0, WH*0.5);
+    bg.addColorStop(0.0, '#FFFFFF');
+    bg.addColorStop(0.55, '#EEF7FA');
+    bg.addColorStop(1.0, '#CCE8F0');
+
+    // ── tail flukes (drawn behind body) ──
+    ctx.save();
+    ctx.translate(WW*0.48, 0);
+    ctx.rotate(tailWag);
+    // upper fluke
+    ctx.beginPath();
+    ctx.moveTo(0, -WH*0.04);
+    ctx.bezierCurveTo(WW*0.10, -WH*0.06, WW*0.20, -WH*0.26, WW*0.16, -WH*0.42);
+    ctx.bezierCurveTo(WW*0.12, -WH*0.46, WW*0.04, -WH*0.34, 0, -WH*0.04);
+    ctx.closePath();
+    var tg1 = ctx.createLinearGradient(0,-WH*0.04, WW*0.16,-WH*0.42);
+    tg1.addColorStop(0,'#D8EFF5'); tg1.addColorStop(1,'#BEE0EA');
+    ctx.fillStyle=tg1; ctx.fill();
+    ctx.strokeStyle='rgba(30,79,92,0.18)'; ctx.lineWidth=1.2*sc; ctx.stroke();
+    // lower fluke (mirror)
+    ctx.beginPath();
+    ctx.moveTo(0, WH*0.04);
+    ctx.bezierCurveTo(WW*0.10, WH*0.06, WW*0.20, WH*0.26, WW*0.16, WH*0.42);
+    ctx.bezierCurveTo(WW*0.12, WH*0.46, WW*0.04, WH*0.34, 0, WH*0.04);
+    ctx.closePath();
+    ctx.fillStyle=tg1; ctx.fill();
+    ctx.strokeStyle='rgba(30,79,92,0.18)'; ctx.lineWidth=1.2*sc; ctx.stroke();
+    ctx.restore();
+
+    // ── body ──
+    ctx.beginPath();
+    ctx.moveTo(-WW*0.50, 0);
+    // top: melon curves up, body arcs to tail
+    ctx.bezierCurveTo(-WW*0.52, -WH*0.32, -WW*0.26, -WH*0.50, 0, -WH*0.48);
+    ctx.bezierCurveTo(WW*0.24, -WH*0.46, WW*0.44, -WH*0.28, WW*0.48, -WH*0.08);
+    // bottom: tail to belly to head
+    ctx.bezierCurveTo(WW*0.44, WH*0.26, WW*0.18, WH*0.46, 0, WH*0.44);
+    ctx.bezierCurveTo(-WW*0.26, WH*0.42, -WW*0.50, WH*0.20, -WW*0.50, 0);
+    ctx.closePath();
+    ctx.fillStyle = bg; ctx.fill();
+    ctx.strokeStyle = 'rgba(30,79,92,0.15)'; ctx.lineWidth = 1.5*sc; ctx.stroke();
+
+    // ── highlight (3D roundness on top) ──
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(-WW*0.10, -WH*0.26, WW*0.24, WH*0.13, -0.25, 0, Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.55)'; ctx.fill();
+    ctx.restore();
+
+    // ── belly shadow ──
+    ctx.beginPath();
+    ctx.moveTo(-WW*0.28, WH*0.36);
+    ctx.bezierCurveTo(0, WH*0.50, WW*0.22, WH*0.42, WW*0.38, WH*0.20);
+    ctx.strokeStyle='rgba(180,215,225,0.45)'; ctx.lineWidth=3*sc; ctx.lineCap='round'; ctx.stroke();
+
+    // ── pectoral fin ──
+    ctx.save();
+    ctx.translate(-WW*0.12, WH*0.20);
+    ctx.rotate(0.18 + Math.sin(t*2.0)*0.12);
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.bezierCurveTo(2*sc, 6*sc, WH*0.35, WH*0.55, WH*0.44, WH*0.48);
+    ctx.bezierCurveTo(WH*0.50, WH*0.30, WH*0.18, WH*0.08, 0, 0);
+    ctx.closePath();
+    var fg2=ctx.createLinearGradient(0,0,WH*0.44,WH*0.48);
+    fg2.addColorStop(0,'#D8EFF5'); fg2.addColorStop(1,'#B8DDE8');
+    ctx.fillStyle=fg2; ctx.fill();
+    ctx.strokeStyle='rgba(30,79,92,0.15)'; ctx.lineWidth=1.2*sc; ctx.stroke();
+    ctx.restore();
+
+    // ── eye (small, clean, expressive) ──
+    var ex=-WW*0.30, ey=-WH*0.10;
+    // outer dark ring
+    ctx.beginPath(); ctx.ellipse(ex,ey,5*sc,4.2*sc,-0.15,0,Math.PI*2);
+    ctx.fillStyle='#0C1A26'; ctx.fill();
+    // iris
+    ctx.beginPath(); ctx.ellipse(ex+0.4*sc,ey+0.4*sc,3.8*sc,3.2*sc,-0.15,0,Math.PI*2);
+    ctx.fillStyle='#1C3348'; ctx.fill();
+    // main shine
+    ctx.beginPath(); ctx.ellipse(ex+1.8*sc,ey-1.4*sc,1.5*sc,1.1*sc,0.5,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.90)'; ctx.fill();
+    // secondary tiny shine
+    ctx.beginPath(); ctx.arc(ex-1*sc,ey+1.2*sc,0.7*sc,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.45)'; ctx.fill();
+
+    // ── mouth (natural beluga upward curve) ──
+    ctx.beginPath();
+    ctx.moveTo(-WW*0.48, WH*0.06);
+    ctx.quadraticCurveTo(-WW*0.44, WH*0.14, -WW*0.36, WH*0.10);
+    ctx.strokeStyle='rgba(30,79,92,0.28)'; ctx.lineWidth=1.6*sc; ctx.lineCap='round'; ctx.stroke();
+
+    ctx.restore(); // whale
+
+    // splash at waterline
+    var sdepth = whaleY - skyH;
+    if(sdepth > -20 && sdepth < 25){
+      var sp = clamp(1-Math.abs(sdepth)/25,0,1);
+      ctx.save(); ctx.globalAlpha=sp*0.45;
+      ctx.strokeStyle='#fff'; ctx.lineWidth=2*sc;
+      ctx.beginPath();
+      ctx.ellipse(swayX,skyH,52*sc*sp,11*sc*sp,0,0,Math.PI*2);
+      ctx.stroke(); ctx.restore();
+    }
+
+    // text-area overlay: darken top portion so white text reads clearly
+    var textOverlay = ctx.createLinearGradient(0,0,0,H*0.55);
+    textOverlay.addColorStop(0,'rgba(10,40,60,0.52)');
+    textOverlay.addColorStop(1,'rgba(10,40,60,0)');
+    ctx.fillStyle = textOverlay;
+    ctx.fillRect(0,0,W,H*0.55);
+
+    // bottom fade
+    var fg=ctx.createLinearGradient(0,H*0.68,0,H);
+    fg.addColorStop(0,'rgba(13,79,114,0)');
+    fg.addColorStop(1,'rgba(13,79,114,0.96)');
+    ctx.fillStyle=fg; ctx.fillRect(0,H*0.68,W,H*0.32);
+
+    ctx.restore(); // end clip
+  }
+
+  function loop(){
+    t += 1/60;
+    draw();
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+<!-- ============== SERVIZI ============== -->
+<section id="servizi" class="sec-soft">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Servizi</span>
+      <h2>Ogni spazio ha le sue regole.</h2>
+      <p>Protocolli su misura per ogni ambiente — dal monolocale al palazzo uffici. Nessun approccio standard, nessun risultato mediocre.</p>
+    </div>
+
+    <div class="services">
+      <article class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg></div>
+        <h3>Uffici e aziende</h3>
+        <p>Entrano quando serve, lasciano tutto impeccabile. Senza interferire con la tua giornata.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Condomini</h3>
+        <p>Le parti comuni non si vedono, ma si sentono. Un referente fisso, zero sorprese.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Post-cantiere</h3>
+        <p>Il cantiere è finito. Noi facciamo in modo che sembri non sia mai esistito.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <h3>Abitazioni private</h3>
+        <p>La casa in cui vuoi tornare. Senza dover contare i giorni dall'ultima pulizia.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Sanificazioni</h3>
+        <p>Igiene reale, non estetica. Prodotti certificati per ambienti che non si permettono errori.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg></div>
+        <h3>Vetri e cristalli</h3>
+        <p>La luce non mente. Vetrate e cristalli perfetti, anche in altezza, in totale sicurezza.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== GALLERY ============== -->
+<section>
+  <div class="container">
+    <div class="gallery">
+      <div class="ph reveal">
+        <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=900&q=85&auto=format&fit=crop" alt="Pulizia ufficio professionale" loading="lazy" onerror="this.parentElement.style.background='#E6EEF0';this.style.display='none'">
+        <span>Uffici</span>
+      </div>
+      <div class="ph reveal">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop" alt="Pulizia pavimenti" loading="lazy" onerror="this.parentElement.style.background='#E6EEF0';this.style.display='none'">
+        <span>Pavimenti</span>
+      </div>
+      <div class="ph reveal">
+        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=85&auto=format&fit=crop" alt="Pulizia bagno" loading="lazy" onerror="this.parentElement.style.background='#E6EEF0';this.style.display='none'">
+        <span>Sanitari</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PERCHÉ NOI ============== -->
+<section id="perche">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Il nostro standard</span>
+      <h2>Ci sono pulizie. E poi c'è il nostro standard.</h2>
+      <p>Non vendiamo ore di lavoro. Vendiamo un risultato garantito, con persone che ci mettono la faccia.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <h4>Personale assunto, non improvvisato</h4>
+        <p>Operatori selezionati, regolarmente assunti e coperti da assicurazione. Sai sempre chi entra nei tuoi spazi.</p>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="why-num">02</div>
+        <h4>Prodotti che non mentono</h4>
+        <p>Detergenti certificati e a basso impatto ambientale. Pulire bene non significa inquinare.</p>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="why-num">03</div>
+        <h4>Prezzo fisso, zero extra</h4>
+        <p>Sopralluogo gratuito, preventivo scritto, nessun costo nascosto. Quello che firmi è quello che paghi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== AREE ============== -->
+<section id="aree" class="sec-soft">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Copertura</span>
+      <h2>Operiamo dove altri non arrivano.</h2>
+      <p>Milano, Muggiò, Monza e tutta la Brianza. Interventi rapidi, referente locale, nessun subappaltatore.</p>
+    </div>
+
+    <div class="area-grid">
+      <div class="city reveal">
+        <div class="city-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <h4>Milano</h4>
+          <p>Tutti i quartieri, hinterland incluso</p>
+        </div>
+      </div>
+      <div class="city reveal">
+        <div class="city-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <h4>Muggiò</h4>
+          <p>Sede operativa, interventi rapidi</p>
+        </div>
+      </div>
+      <div class="city reveal">
+        <div class="city-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <h4>Monza</h4>
+          <p>Centro e quartieri residenziali</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CONTATTI ============== -->
+<section id="contatti">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="sec-tag reveal">Contatti</span>
+        <h2 class="reveal" style="font-size:clamp(30px, 4vw, 44px);margin-top:12px">
+          Niente call preliminari.<br>Solo risultati.
+        </h2>
+        <p class="reveal" style="color:var(--ink-2);font-size:16.5px;max-width:42ch;margin-top:14px">
+          Descrivici lo spazio, dicci quando. Entro 24 ore hai un preventivo dettagliato — gratuito, senza impegno.
+        </p>
+
+        <div class="contact-list reveal">
+          <a href="tel:+39000000000" class="contact-row">
+            <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div>
+              <small>Telefono</small>
+              <b>+39 000 000 0000</b>
+            </div>
+          </a>
+          <a href="mailto:info@labalenabianca.it" class="contact-row">
+            <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></span>
+            <div>
+              <small>Email</small>
+              <b>info@labalenabianca.it</b>
+            </div>
+          </a>
+          <div class="contact-row" style="cursor:default">
+            <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <div>
+              <small>Orari</small>
+              <b>Lun – Sab · 8.00 / 19.00</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-card reveal" onsubmit="event.preventDefault(); var b=this.querySelector('.submit'); b.innerHTML='Grazie! Ti ricontattiamo presto ✓'; b.disabled=true;">
+        <div class="row-2">
+          <div class="field">
+            <label for="n">Nome e cognome</label>
+            <input id="n" type="text" required placeholder="Mario Rossi">
+          </div>
+          <div class="field">
+            <label for="t">Telefono</label>
+            <input id="t" type="tel" required placeholder="+39 ...">
+          </div>
+        </div>
+        <div class="field">
+          <label for="e">Email</label>
+          <input id="e" type="email" required placeholder="email@esempio.it">
+        </div>
+        <div class="row-2">
+          <div class="field">
+            <label for="s">Servizio</label>
+            <select id="s" required>
+              <option value="">Seleziona…</option>
+              <option>Uffici e aziende</option>
+              <option>Condomini</option>
+              <option>Post-cantiere</option>
+              <option>Abitazioni private</option>
+              <option>Sanificazioni</option>
+              <option>Vetri e cristalli</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c">Città</label>
+            <select id="c" required>
+              <option value="">Seleziona…</option>
+              <option>Milano</option>
+              <option>Muggiò</option>
+              <option>Monza</option>
+              <option>Altro comune</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="m">Messaggio</label>
+          <textarea id="m" placeholder="Raccontaci brevemente le tue esigenze…"></textarea>
+        </div>
+        <button type="submit" class="submit">
+          Invia richiesta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-foot">Inviando il modulo accetti la nostra informativa privacy.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <a href="#" class="brand">
+          <span class="brand-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13c0-3.5 3-6 7-6s7 2.5 7 5l3-1.5-1 3 1 3-3-1.5c0 1-1 2-2 2.5l1 2-2.5-1c-1 .3-2 .5-3.5.5-4 0-7-2.5-7-6z"/><circle cx="7" cy="11.5" r=".9" fill="#fff"/></svg></span>
+          <span class="brand-name">La Balena Bianca</span>
+        </a>
+        <p>Pulire è un mestiere. Farlo bene è una scelta.</p>
+      </div>
+
+      <div class="foot-col">
+        <h5>Servizi</h5>
+        <a href="#servizi">Uffici e aziende</a>
+        <a href="#servizi">Condomini</a>
+        <a href="#servizi">Post-cantiere</a>
+        <a href="#servizi">Abitazioni</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Aree</h5>
+        <a href="#aree">Milano</a>
+        <a href="#aree">Muggiò</a>
+        <a href="#aree">Monza</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Contatti</h5>
+        <a href="tel:+39000000000">+39 000 000 0000</a>
+        <a href="mailto:info@labalenabianca.it">info@labalenabianca.it</a>
+        <p>Lun – Sab · 8.00 / 19.00</p>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="y"></span> La Balena Bianca · P.IVA 00000000000</span>
+      <span>Privacy · Cookie</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
